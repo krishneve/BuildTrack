@@ -143,7 +143,7 @@ function AddMaterialModal({ siteId, onClose, onSaved }) {
       setError('');
       try {
         const res = await engineerService.detectMaterial(imageData);
-        const { materialName, category: aiCategory } = res.data.data;
+        const { materialName } = res.data.data;
         
         // Smart mapping to local categories
         const nameLower = materialName.toLowerCase();

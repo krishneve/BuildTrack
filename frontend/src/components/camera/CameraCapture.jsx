@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 
 export default function CameraCapture({ onCapture, onClose }) {
   const videoRef = useRef(null);
@@ -6,7 +6,7 @@ export default function CameraCapture({ onCapture, onClose }) {
   const [capturedImage, setCapturedImage] = useState(null);
   const [error, setError] = useState(null);
 
-  const startCamera = async () => {
+  const startCamera = useCallback(async () => {
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ 
         video: { facingMode: 'environment' } 
@@ -18,14 +18,14 @@ export default function CameraCapture({ onCapture, onClose }) {
       console.error("Camera error:", err);
       setError("Camera access denied or unavailable.");
     }
-  };
+  }, []);
 
-  const stopCamera = () => {
+  const stopCamera = useCallback(() => {
     if (stream) {
       stream.getTracks().forEach(track => track.stop());
       setStream(null);
     }
-  };
+  }, [stream]);
 
   const capturePhoto = () => {
     const canvas = document.createElement('canvas');
@@ -47,10 +47,10 @@ export default function CameraCapture({ onCapture, onClose }) {
     onCapture(capturedImage);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     startCamera();
     return () => stopCamera();
-  }, []);
+  }, [startCamera, stopCamera]);
 
   return (
     <div className="fixed inset-0 bg-slate-950 z-[100] flex flex-col">
