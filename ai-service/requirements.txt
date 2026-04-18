@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pymongo
+python-dotenv
+numpy>=2.1.0
+scikit-learn
+pandas
+httpx
+pydantic
