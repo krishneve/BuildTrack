@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const rawUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+const rawUrl = process.env.REACT_APP_API_URL || 'https://buildtrack-qk8p.onrender.com/api/v1';
 const API_BASE_URL = rawUrl.endsWith('/api/v1') ? rawUrl : `${rawUrl.replace(/\/$/, '')}/api/v1`;
 
 const api = axios.create({
