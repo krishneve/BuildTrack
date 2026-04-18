@@ -49,11 +49,9 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 // ─── API Routes ───────────────────────────────────────────────
-// Legacy fallback (for older frontend versions)
-app.use('/auth', authLimiter, (req, res, next) => {
-  req.url = req.url; // Preserve sub-path
-  next();
-}, require('./routes/authRoutes'));
+// Emergency & Legacy fallbacks
+const { login: directLogin } = require('./controllers/authController');
+app.post('/auth/login', authLimiter, directLogin); 
 
 app.use('/api/v1/auth', authLimiter, require('./routes/authRoutes'));
 app.use('/api/v1/admin', require('./routes/adminRoutes'));
