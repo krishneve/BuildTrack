@@ -99,9 +99,9 @@ async function seed() {
   // Assign sites to users
   await User.findByIdAndUpdate(mgr1._id, { $addToSet: { assignedSites: site1._id }, primarySite: site1._id });
   await User.findByIdAndUpdate(mgr2._id, { $addToSet: { assignedSites: site2._id }, primarySite: site2._id });
-  await User.findByIdAndUpdate(eng1._id, { $addToSet: { assignedSites: site1._id } });
-  await User.findByIdAndUpdate(eng2._id, { $addToSet: { assignedSites: site1._id } });
-  await User.findByIdAndUpdate(eng3._id, { $addToSet: { assignedSites: site2._id } });
+  await User.findByIdAndUpdate(eng1._id, { $addToSet: { assignedSites: site1._id }, primarySite: site1._id });
+  await User.findByIdAndUpdate(eng2._id, { $addToSet: { assignedSites: site1._id }, primarySite: site1._id });
+  await User.findByIdAndUpdate(eng3._id, { $addToSet: { assignedSites: site2._id }, primarySite: site2._id });
 
   // ─── Create Budgets ────────────────────────────────────────
   await Budget.create({

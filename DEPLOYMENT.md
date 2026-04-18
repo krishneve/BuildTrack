@@ -15,7 +15,7 @@ This guide outlines the steps to deploy BuildTrack AI as a production-ready Prog
 3. **Build Command**: `npm install`
 4. **Start Command**: `node server.js`
 5. **Environment Variables**:
-   - `MONGODB_URI`: Your MongoDB connection string.
+   - `MONGO_URI`: Your MongoDB connection string.
    - `JWT_SECRET`: A secure random string for tokens.
    - `GEMINI_API_KEY`: Required for **Free AI OCR and Material Detection** ([Get one here](https://aistudio.google.com)).
    - `PORT`: `10000` (Render default).
