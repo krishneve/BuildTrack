@@ -29,7 +29,7 @@ async function seed() {
   // ─── Create Admin ──────────────────────────────────────────
   const admin = await User.create({
     name: 'Suresh Samarth',
-    email: 'admin@samarthdevelopers.com',
+    email: 'admin@samarthadevelopers.com',
     phone: '9876543210',
     password: 'Admin@12345',
     role: 'admin',
@@ -41,16 +41,16 @@ async function seed() {
 
   // ─── Create Site Managers ──────────────────────────────────
   const [mgr1, mgr2] = await User.create([
-    { name: 'Rakesh Patil', email: 'rakesh@samarthdevelopers.com', phone: '9823456789', password: 'Manager@123', role: 'site_manager', designation: 'Senior Project Manager', employeeId: 'SD-MGR-001', createdBy: admin._id },
-    { name: 'Priya Kulkarni', email: 'priya@samarthdevelopers.com', phone: '9845678901', password: 'Manager@123', role: 'site_manager', designation: 'Project Manager', employeeId: 'SD-MGR-002', createdBy: admin._id },
+    { name: 'Rakesh Patil', email: 'rakesh@samarthadevelopers.com', phone: '9823456789', password: 'Manager@123', role: 'site_manager', designation: 'Senior Project Manager', employeeId: 'SD-MGR-001', createdBy: admin._id },
+    { name: 'Priya Kulkarni', email: 'priya@samarthadevelopers.com', phone: '9845678901', password: 'Manager@123', role: 'site_manager', designation: 'Project Manager', employeeId: 'SD-MGR-002', createdBy: admin._id },
   ]);
   console.log('Created Managers');
 
   // ─── Create Engineers ──────────────────────────────────────
   const [eng1, eng2, eng3] = await User.create([
-    { name: 'Amit Deshmukh', email: 'amit@samarthdevelopers.com', phone: '9811223344', password: 'Engineer@123', role: 'site_engineer', designation: 'Senior Site Engineer', employeeId: 'SD-ENG-001', createdBy: admin._id },
-    { name: 'Sneha More', email: 'sneha@samarthdevelopers.com', phone: '9833445566', password: 'Engineer@123', role: 'site_engineer', designation: 'Civil Engineer', employeeId: 'SD-ENG-002', createdBy: admin._id },
-    { name: 'Vijay Shinde', email: 'vijay@samarthdevelopers.com', phone: '9855667788', password: 'Engineer@123', role: 'site_engineer', designation: 'Structural Engineer', employeeId: 'SD-ENG-003', createdBy: admin._id },
+    { name: 'Amit Deshmukh', email: 'amit@samarthadevelopers.com', phone: '9811223344', password: 'Engineer@123', role: 'site_engineer', designation: 'Senior Site Engineer', employeeId: 'SD-ENG-001', createdBy: admin._id },
+    { name: 'Sneha More', email: 'sneha@samarthadevelopers.com', phone: '9833445566', password: 'Engineer@123', role: 'site_engineer', designation: 'Civil Engineer', employeeId: 'SD-ENG-002', createdBy: admin._id },
+    { name: 'Vijay Shinde', email: 'vijay@samarthadevelopers.com', phone: '9855667788', password: 'Engineer@123', role: 'site_engineer', designation: 'Structural Engineer', employeeId: 'SD-ENG-003', createdBy: admin._id },
   ]);
   console.log('Created Engineers');
 
@@ -198,12 +198,19 @@ console.log('  - 4 Payments (2 approved, 2 pending)');
 console.log('  - 3 Notifications');
 
   console.log('\n=== SEED COMPLETE ===')
-  console.log('Admin Login:');
-  console.log('  Email:    admin@samarthdevelopers.com');
+  console.log('--------------------------------------------------');
+  console.log('ADMIN ACCESS:');
+  console.log('  Email:    admin@samarthadevelopers.com');
   console.log('  Password: Admin@12345');
-  console.log('\nManager Login:');
-  console.log('  Email:    rakesh@samarthdevelopers.com');
+  console.log('--------------------------------------------------');
+  console.log('MANAGER ACCESS:');
+  console.log('  Email:    rakesh@samarthadevelopers.com');
   console.log('  Password: Manager@123');
+  console.log('--------------------------------------------------');
+  console.log('ENGINEER ACCESS (AMIT):');
+  console.log('  Email:    amit@samarthadevelopers.com');
+  console.log('  Password: Engineer@123');
+  console.log('--------------------------------------------------');
 
   await mongoose.connection.close();
 }
